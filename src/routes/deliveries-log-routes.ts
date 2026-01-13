@@ -16,4 +16,11 @@ deliveriesLogRoutes.post(
   deliveriesLogController.create
 );
 
+deliveriesLogRoutes.get(
+  "/:id/show",
+  ensureAuthentication,
+  verifyUserAuthorization(["sale", "customer"]),
+  deliveriesLogController.show
+);
+
 export { deliveriesLogRoutes };
