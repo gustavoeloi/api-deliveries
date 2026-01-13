@@ -6,7 +6,6 @@ import jwt from "jsonwebtoken";
 import { prisma } from "@/database/prisma";
 import { AppError } from "@/utils/app-error";
 import { authConfig } from "@/configs/auth";
-import { JWT_AUTHSECRET } from "@/env";
 
 class SessionsControler {
   async create(request: Request, response: Response) {
