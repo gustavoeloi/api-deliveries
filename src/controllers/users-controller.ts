@@ -27,11 +27,13 @@ class UserController {
       throw new AppError("E-mail has been already used", 409);
     }
 
-    await prisma.user.create({
+    const user = await prisma.user.create({
       data: { name, email, password: passwordHashed },
     });
 
-    return response.status(201).json();
+    const { password: _, ...userWithouPassword } = user;
+
+    return response.status(201).json(userWithouPassword);
   }
 }
 
